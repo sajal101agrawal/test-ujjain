@@ -136,13 +136,12 @@ AI Processing → Dashboard + Mobile App
 
 ### Installation
 
-1. **Clone the repository**
+1. **Navigate to project directory**
    ```bash
-   git clone https://github.com/your-repo/crowdsafe-ai
-   cd crowdsafe-ai
+   cd /Users/sajalagrawal/Developer/website-projects/test-ujjain
    ```
 
-2. **Install dependencies**
+2. **Install dependencies** (already done)
    ```bash
    npm install
    ```
@@ -150,10 +149,15 @@ AI Processing → Dashboard + Mobile App
 3. **Start development server**
    ```bash
    npm start
+   # OR use the convenience script:
+   ./start.sh
    ```
 
 4. **Open application**
    Navigate to `http://localhost:3000` in your browser
+
+### 🎬 Demo Ready!
+The application is fully configured and ready for your **Simhastha Tech Hackathon 2025** video recording and presentation!
 
 ### **Available Scripts**
 

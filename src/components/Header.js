@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
-import { Menu, X, Shield, Activity } from 'lucide-react';
+import { Shield, Activity } from 'lucide-react';
+
+const MPGovStripe = styled.div`
+  height: 4px;
+  background: var(--header-gradient);
+  position: relative;
+  z-index: 101;
+`;
 
 const HeaderContainer = styled.header`
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
   position: sticky;
   top: 0;
   z-index: 100;
   height: 80px;
+  box-shadow: var(--header-shadow);
 `;
 
 const Nav = styled.nav`
@@ -23,137 +29,85 @@ const Nav = styled.nav`
   justify-content: space-between;
 `;
 
-const Logo = styled(Link)`
+const Logo = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  text-decoration: none;
-  color: #1f2937;
+  color: var(--gray-800);
   font-weight: 700;
   font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 const LogoIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  background: var(--header-gradient);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--white);
+  box-shadow: var(--card-shadow);
 `;
 
-const NavLinks = styled.div`
-  display: flex;
-  gap: 2rem;
-  align-items: center;
+// Removed unused navigation components
 
-  @media (max-width: 768px) {
-    display: ${props => props.isOpen ? 'flex' : 'none'};
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    padding: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const NavLink = styled(Link)`
-  text-decoration: none;
-  color: #6b7280;
-  font-weight: 500;
-  position: relative;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #667eea;
-  }
-
-  ${props => props.isActive && `
-    color: #667eea;
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #667eea;
-    }
-  `}
-`;
-
-const MobileMenuButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  color: #1f2937;
-  cursor: pointer;
-  padding: 0.5rem;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-`;
-
-const TeamBadge = styled.div`
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+const HackathonBadge = styled.div`
+  background: linear-gradient(135deg, var(--ujjain-blue) 0%, var(--ujjain-purple) 100%);
+  color: var(--white);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   margin-left: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 `;
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/dashboard', label: 'Dashboard' },
-    { path: '/mobile-app', label: 'Mobile App' },
-    { path: '/about', label: 'About' }
-  ];
+  const currentTime = new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    hour12: true,
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 
   return (
-    <HeaderContainer>
-      <Nav>
-        <Logo to="/">
-          <LogoIcon>
-            <Shield size={20} />
-          </LogoIcon>
-          CrowdSafe AI
-        </Logo>
+    <>
+      <MPGovStripe />
+      <HeaderContainer>
+        <Nav>
+          <Logo>
+            <LogoIcon>
+              <Shield size={20} />
+            </LogoIcon>
+            <div>
+              <div style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--gray-800)' }}>CrowdSafe AI</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--gray-500)', marginTop: '-2px' }}>Operations Command Center</div>
+            </div>
+          </Logo>
 
-        <NavLinks isOpen={isOpen}>
-          {navItems.map(item => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              isActive={location.pathname === item.path}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-          <TeamBadge>
-            <Activity size={14} style={{ marginRight: '0.5rem', display: 'inline' }} />
-            MANTHAN
-          </TeamBadge>
-        </NavLinks>
-
-        <MobileMenuButton onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </MobileMenuButton>
-      </Nav>
-    </HeaderContainer>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            <HackathonBadge>
+              <Activity size={12} />
+              Simhastha 2028
+            </HackathonBadge>
+            <div style={{ textAlign: 'right', color: 'var(--gray-600)', fontSize: '0.875rem' }}>
+              <div style={{ fontWeight: '600' }}>Ujjain, Madhya Pradesh</div>
+              <div style={{ fontSize: '0.75rem' }}>{currentTime} IST</div>
+            </div>
+          </div>
+        </Nav>
+      </HeaderContainer>
+    </>
   );
 }
 

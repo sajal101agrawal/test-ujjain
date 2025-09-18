@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { 
-  Users, 
   Award, 
   Target, 
-  TrendingUp, 
   Shield, 
   Brain,
   Zap,
@@ -18,7 +16,7 @@ import {
 const PageContainer = styled.div`
   min-height: 100vh;
   padding: 2rem;
-  background: #fafafa;
+  background: var(--gray-50);
 `;
 
 const ContentWrapper = styled.div`
@@ -34,7 +32,7 @@ const HeroSection = styled.section`
 const Title = styled.h1`
   font-size: 3rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--navy);
   margin-bottom: 1rem;
 
   @media (max-width: 768px) {
@@ -44,7 +42,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   font-size: 1.25rem;
-  color: #6b7280;
+  color: var(--gray-500);
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
@@ -52,18 +50,21 @@ const Subtitle = styled.p`
 `;
 
 const TeamSection = styled.section`
-  background: white;
+  background: var(--white);
   padding: 3rem 2rem;
-  border-radius: 20px;
+  border-radius: 8px;
   margin-bottom: 3rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--gray-200);
+  border-top: 4px solid var(--saffron);
 `;
 
 const SectionTitle = styled.h2`
   font-size: 2rem;
   text-align: center;
-  color: #1f2937;
+  color: var(--navy);
   margin-bottom: 3rem;
+  font-weight: 700;
 `;
 
 const TeamGrid = styled.div`
@@ -75,13 +76,14 @@ const TeamGrid = styled.div`
 const TeamCard = styled.div`
   text-align: center;
   padding: 2rem;
-  background: #f8fafc;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  transition: transform 0.2s ease;
+  background: var(--gray-50);
+  border-radius: 8px;
+  border: 2px solid var(--gray-200);
+  transition: all 0.2s ease;
 
   &:hover {
     transform: translateY(-4px);
+    border-color: var(--saffron);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
 `;
@@ -89,28 +91,32 @@ const TeamCard = styled.div`
 const Avatar = styled.div`
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--green) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  color: white;
+  color: var(--white);
   font-size: 2rem;
   font-weight: 700;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 const TeamName = styled.h3`
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--navy);
   margin-bottom: 0.5rem;
 `;
 
 const TeamRole = styled.p`
-  color: #667eea;
+  color: var(--green);
   font-weight: 600;
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
 `;
 
 const ContactInfo = styled.div`
@@ -118,17 +124,18 @@ const ContactInfo = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: #6b7280;
+  color: var(--gray-500);
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
 `;
 
 const StatsSection = styled.section`
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: var(--white);
   padding: 3rem 2rem;
-  border-radius: 20px;
+  border-radius: 8px;
   margin-bottom: 3rem;
+  border-top: 4px solid var(--saffron);
 `;
 
 const StatsGrid = styled.div`
@@ -157,11 +164,13 @@ const StatLabel = styled.div`
 `;
 
 const ProjectSection = styled.section`
-  background: white;
+  background: var(--white);
   padding: 3rem 2rem;
-  border-radius: 20px;
+  border-radius: 8px;
   margin-bottom: 3rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--gray-200);
+  border-top: 4px solid var(--green);
 `;
 
 const ProjectGrid = styled.div`
@@ -173,41 +182,51 @@ const ProjectGrid = styled.div`
 
 const ProjectCard = styled.div`
   padding: 2rem;
-  background: #f8fafc;
-  border-radius: 12px;
-  border-left: 4px solid #667eea;
+  background: var(--gray-50);
+  border-radius: 8px;
+  border-left: 4px solid var(--saffron);
+  transition: all 0.2s ease;
+  border: 2px solid var(--gray-200);
+
+  &:hover {
+    border-color: var(--saffron);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const ProjectIcon = styled.div`
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--green) 100%);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  color: white;
+  color: var(--white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const ProjectTitle = styled.h4`
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--navy);
   margin-bottom: 0.75rem;
 `;
 
 const ProjectDescription = styled.p`
-  color: #6b7280;
+  color: var(--gray-500);
   line-height: 1.6;
 `;
 
 const ContactSection = styled.section`
-  background: #1f2937;
-  color: white;
+  background: var(--navy);
+  color: var(--white);
   padding: 3rem 2rem;
-  border-radius: 20px;
+  border-radius: 8px;
   text-align: center;
+  border-top: 4px solid var(--saffron);
 `;
 
 const ContactGrid = styled.div`
@@ -225,15 +244,19 @@ const ContactCard = styled.div`
 `;
 
 const HackathonBadge = styled.div`
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: var(--white);
   padding: 1rem 2rem;
-  border-radius: 30px;
+  border-radius: 4px;
   font-weight: 600;
   margin: 2rem auto;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 function About() {
@@ -243,12 +266,11 @@ function About() {
         <HeroSection>
           <Title>About MANTHAN</Title>
           <Subtitle>
-            We're building the future of crowd safety through innovative AI technology 
-            for one of the world's largest religious gatherings.
+            We're building the future of crowd safety through innovative AI technology for one of the world's largest religious gatherings.
           </Subtitle>
           <HackathonBadge>
             <Award size={20} />
-            Simhastha Tech Hackathon 2025
+            Simhastha Tech Hackathon 2028
           </HackathonBadge>
         </HeroSection>
 
