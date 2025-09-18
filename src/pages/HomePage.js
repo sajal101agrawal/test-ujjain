@@ -303,7 +303,7 @@ function HomePage() {
           </Subtitle>
           
           <p style={{ fontSize: '1.2rem', marginBottom: '2rem', opacity: 0.95, maxWidth: '900px', margin: '0 auto 2rem', fontWeight: '400', lineHeight: '1.5' }}>
-            Production-grade AI system delivering precise crowd density forecasts with &lt;8% MAE.
+            Production-grade AI system delivering precise crowd density forecasts with {'<'}8% MAE.
             Enterprise-scale edge computing infrastructure protecting 80+ million attendees through predictive analytics.
           </p>
           
@@ -321,7 +321,7 @@ function HomePage() {
         <Container>
           <StatsGrid>
             <StatCard>
-              <StatNumber>&lt;8%</StatNumber>
+              <StatNumber>{'<'}8%</StatNumber>
               <StatLabel>Forecast MAE Target</StatLabel>
             </StatCard>
             <StatCard>
@@ -329,7 +329,7 @@ function HomePage() {
               <StatLabel>Minutes Ahead Prediction</StatLabel>
             </StatCard>
             <StatCard>
-              <StatNumber>≤5s</StatNumber>
+              <StatNumber>{'≤'}5s</StatNumber>
               <StatLabel>End-to-End Alert Latency</StatLabel>
             </StatCard>
             <StatCard>
@@ -397,7 +397,7 @@ function HomePage() {
                 <Brain size={28} />
               </FeatureIcon>
               <h3 style={{ marginBottom: '1rem', color: 'var(--gray-800)' }}>ST-GNN + LSTM Forecasting</h3>
-              <p>Spatio-temporal graph neural networks predict density at +10, +20, +30, +45, +60 minute horizons with target MAE &lt;8% versus ground-truth counts.</p>
+              <p>Spatio-temporal graph neural networks predict density at +10, +20, +30, +45, +60 minute horizons with target MAE {'<'}8% versus ground-truth counts.</p>
             </FeatureCard>
             
             <FeatureCard>

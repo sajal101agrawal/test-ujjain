@@ -197,7 +197,7 @@ function HeatMap({ data }) {
         </LegendItem>
         <LegendItem>
           <LegendColor color="#10b981" />
-          <span>Safe (&lt;4 ppl/m²)</span>
+          <span>Safe ({'<'}4 ppl/m²)</span>
         </LegendItem>
       </Legend>
 
