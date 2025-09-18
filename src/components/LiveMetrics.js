@@ -4,10 +4,6 @@ import {
   Camera, 
   Wifi, 
   WifiOff, 
-  AlertTriangle,
-  CheckCircle,
-  Activity,
-  Users,
   TrendingUp,
   Router
 } from 'lucide-react';
@@ -217,15 +213,10 @@ const StatLabel = styled.div`
   font-weight: 500;
 `;
 
-function LiveMetrics() {
+function LiveMetrics({ onCameraClick }) {
   const activeCameras = cameraFeeds.filter(feed => feed.status === 'active').length;
   const maintenanceCameras = cameraFeeds.filter(feed => feed.status === 'maintenance').length;
   
-  const averageDensity = cameraFeeds
-    .filter(feed => feed.status === 'active')
-    .reduce((sum, feed) => sum + feed.density, 0) / activeCameras;
-
-  const heavyTrafficRoutes = trafficFlow.filter(route => route.flow === 'heavy').length;
 
   return (
     <MetricsContainer>
@@ -250,7 +241,12 @@ function LiveMetrics() {
         
         <FeedGrid>
           {cameraFeeds.map((feed) => (
-            <FeedItem key={feed.id} status={feed.status}>
+            <FeedItem 
+              key={feed.id} 
+              status={feed.status}
+              onClick={() => onCameraClick && onCameraClick(feed)}
+              style={{ cursor: 'pointer' }}
+            >
               <FeedInfo>
                 <FeedIcon status={feed.status}>
                   {feed.status === 'active' ? <Wifi size={16} /> : <WifiOff size={16} />}

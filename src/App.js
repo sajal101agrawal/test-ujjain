@@ -1,12 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Header from './components/Header';
-import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
-import MobileApp from './pages/MobileApp';
-import About from './pages/About';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,41 +13,48 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: #fafafa;
-    color: #1f2937;
+    background-color: var(--white);
+    color: var(--gray-800);
     overflow-x: hidden;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `;
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-attachment: fixed;
+  background: var(--white);
 `;
 
 const ContentWrapper = styled.div`
-  min-height: calc(100vh - 80px);
-  background-color: #fafafa;
+  min-height: calc(100vh - 84px);
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--cream-bg) 100%);
   position: relative;
   z-index: 1;
 `;
 
 function App() {
   return (
-    <Router>
+    <>
       <GlobalStyle />
       <AppContainer>
         <Header />
         <ContentWrapper>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/mobile-app" element={<MobileApp />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+          <Dashboard />
         </ContentWrapper>
       </AppContainer>
-    </Router>
+    </>
   );
 }
 

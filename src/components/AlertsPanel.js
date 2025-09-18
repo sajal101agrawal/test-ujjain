@@ -189,7 +189,7 @@ const PriorityBadge = styled.div`
   }
 `;
 
-function AlertsPanel({ alerts = [] }) {
+function AlertsPanel({ alerts = [], onAcknowledge, onResolve }) {
   const getAlertIcon = (type) => {
     switch(type) {
       case 'critical':
@@ -224,13 +224,15 @@ function AlertsPanel({ alerts = [] }) {
   };
 
   const handleAcknowledge = (alertId) => {
-    // In a real app, this would call an API
-    console.log('Acknowledged alert:', alertId);
+    if (onAcknowledge) {
+      onAcknowledge(alertId);
+    }
   };
 
   const handleResolve = (alertId) => {
-    // In a real app, this would call an API
-    console.log('Resolved alert:', alertId);
+    if (onResolve) {
+      onResolve(alertId);
+    }
   };
 
   if (!alerts || alerts.length === 0) {

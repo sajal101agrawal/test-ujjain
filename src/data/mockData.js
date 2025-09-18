@@ -14,26 +14,45 @@ export const alertsData = [
     id: 1,
     type: 'critical',
     zone: 'Mahakaleshwar Temple',
-    message: 'Crowd density exceeding 6 people/m². Immediate diversion required.',
-    timestamp: new Date(Date.now() - 300000),
+    message: 'Crowd density exceeding 6.8 people/m². Immediate diversion protocol activated.',
+    timestamp: new Date(Date.now() - 180000),
     status: 'active'
   },
   {
     id: 2,
     type: 'warning',
     zone: 'Ram Ghat',
-    message: 'High crowd buildup detected. Monitor closely.',
-    timestamp: new Date(Date.now() - 900000),
+    message: 'Predicted density spike in 25 minutes. Preemptive rerouting recommended.',
+    timestamp: new Date(Date.now() - 450000),
     status: 'acknowledged'
   },
   {
     id: 3,
     type: 'info',
-    zone: 'Parking Zone A',
-    message: 'Traffic congestion reported. Alternative routes suggested.',
-    timestamp: new Date(Date.now() - 1200000),
+    zone: 'Kshipra Ghat',
+    message: 'Normal flow patterns detected. All systems operating within parameters.',
+    timestamp: new Date(Date.now() - 720000),
     status: 'resolved'
   }
+];
+
+// Dynamic alert templates for random generation
+export const alertTemplates = [
+  { type: 'critical', messages: [
+    'Critical density threshold exceeded at {zone}. Emergency protocols initiated.',
+    'Immediate crowd dispersal required at {zone}. Risk level: CRITICAL.',
+    'Stampede risk detected at {zone}. All units respond immediately.'
+  ]},
+  { type: 'warning', messages: [
+    'Elevated crowd density approaching threshold at {zone}.',
+    'Predicted congestion in 20-30 minutes at {zone}. Monitor closely.',
+    'Traffic buildup detected at {zone}. Consider alternative routing.'
+  ]},
+  { type: 'info', messages: [
+    'Normal crowd flow patterns at {zone}. No action required.',
+    'System functioning optimally at {zone}. Density within safe limits.',
+    'Routine monitoring active at {zone}. All parameters normal.'
+  ]}
 ];
 
 export const forecastData = {
@@ -71,36 +90,15 @@ export const realTimeMetrics = {
   lastUpdate: new Date()
 };
 
-export const languages = {
-  en: {
-    name: 'English',
-    alertMessage: 'Reroute due to congestion',
-    safetyTip: 'Please follow the designated path for your safety'
-  },
-  hi: {
-    name: 'हिंदी',
-    alertMessage: 'भीड़ के कारण मार्ग बदलें',
-    safetyTip: 'कृपया अपनी सुरक्षा के लिए निर्धारित पथ का पालन करें'
-  },
-  gu: {
-    name: 'ગુજરાતી',
-    alertMessage: 'ભીડને કારણે માર્ગ બદલો',
-    safetyTip: 'કૃપા કરીને તમારી સલામતી માટે નિયુક્ત પાથને અનુસરો'
-  },
-  mr: {
-    name: 'मराठी',
-    alertMessage: 'गर्दीमुळे मार्ग बदला',
-    safetyTip: 'कृपया आपल्या सुरक्षेसाठी निर्दिष्ट मार्गाचे अनुसरण करा'
-  }
-};
-
 export const cameraFeeds = [
-  { id: 1, name: 'Temple Main Gate', status: 'active', density: 6.8 },
-  { id: 2, name: 'Ghat Area North', status: 'active', density: 4.2 },
-  { id: 3, name: 'Market Junction', status: 'maintenance', density: 0 },
-  { id: 4, name: 'Parking Zone', status: 'active', density: 7.2 },
-  { id: 5, name: 'Emergency Route', status: 'active', density: 2.1 },
-  { id: 6, name: 'Food Court', status: 'active', density: 2.8 }
+  { id: 1, name: 'Temple Main Gate', status: 'active', density: 6.8, location: 'Entry Point Alpha', resolution: '4K' },
+  { id: 2, name: 'Ghat Area North', status: 'active', density: 4.2, location: 'Bathing Complex', resolution: 'HD' },
+  { id: 3, name: 'Market Junction', status: 'maintenance', density: 0, location: 'Commercial Zone', resolution: 'HD' },
+  { id: 4, name: 'Parking Zone A', status: 'active', density: 7.2, location: 'Vehicle Management', resolution: '4K' },
+  { id: 5, name: 'Emergency Route', status: 'active', density: 2.1, location: 'Exit Corridor', resolution: 'HD' },
+  { id: 6, name: 'Food Court Central', status: 'active', density: 2.8, location: 'Service Area', resolution: 'HD' },
+  { id: 7, name: 'VIP Enclosure', status: 'active', density: 1.4, location: 'Special Access', resolution: '4K' },
+  { id: 8, name: 'Security Checkpoint', status: 'active', density: 3.6, location: 'Screening Zone', resolution: 'HD' }
 ];
 
 export const trafficFlow = [
@@ -126,3 +124,61 @@ export const generateRealTimeUpdate = () => {
     lastUpdate: new Date()
   };
 };
+
+// Extended dashboard data (dummy data for demo)
+
+export const hotspots = [
+  { id: 'HS-101', zone: 'Mahakaleshwar Temple', current: 6.8, predicted: 7.2, risk: 88, trend: 'up', inflow: 1250, outflow: 740, capacityUtil: 92 },
+  { id: 'HS-102', zone: 'Kshipra Ghat', current: 4.2, predicted: 4.6, risk: 64, trend: 'up', inflow: 860, outflow: 910, capacityUtil: 71 },
+  { id: 'HS-103', zone: 'Ram Ghat', current: 5.9, predicted: 6.1, risk: 79, trend: 'flat', inflow: 980, outflow: 820, capacityUtil: 84 },
+  { id: 'HS-104', zone: 'Main Market Area', current: 3.1, predicted: 3.4, risk: 38, trend: 'up', inflow: 520, outflow: 610, capacityUtil: 46 },
+  { id: 'HS-105', zone: 'Parking Zone A', current: 7.2, predicted: 6.8, risk: 91, trend: 'down', inflow: 410, outflow: 1020, capacityUtil: 95 }
+];
+
+export const resources = {
+  police: [
+    { id: 'P-01', team: 'Alpha', status: 'available', location: 'Command Center', assignedZone: null },
+    { id: 'P-02', team: 'Bravo', status: 'deployed', location: 'Ram Ghat', assignedZone: 'Ram Ghat' },
+    { id: 'P-03', team: 'Charlie', status: 'available', location: 'Depot', assignedZone: null }
+  ],
+  medical: [
+    { id: 'M-01', team: 'Med-A', status: 'available', location: 'Depot', assignedZone: null },
+    { id: 'M-02', team: 'Med-B', status: 'deployed', location: 'Mahakaleshwar Temple', assignedZone: 'Mahakaleshwar Temple' }
+  ],
+  barriers: [
+    { id: 'B-01', units: 20, status: 'available', location: 'Warehouse' },
+    { id: 'B-02', units: 12, status: 'deployed', location: 'Kshipra Ghat' }
+  ]
+};
+
+export const auditLog = [
+  { id: 5001, ts: new Date(Date.now() - 60 * 60 * 1000), actor: 'DOC-Operator-2', action: 'Approved reroute', details: 'Zone: Ram Ghat → Route B' },
+  { id: 5002, ts: new Date(Date.now() - 45 * 60 * 1000), actor: 'AI Engine', action: 'Suggested holding pattern', details: 'Zone: Temple South Gate' },
+  { id: 5003, ts: new Date(Date.now() - 20 * 60 * 1000), actor: 'SDRF-Lead', action: 'Deployed unit', details: 'Team: Bravo to Ram Ghat' }
+];
+
+export const systemHealth = [
+  { service: 'Forecast Engine', status: 'ok', latencyMs: 420 },
+  { service: 'MQTT Broker', status: 'ok', latencyMs: 35 },
+  { service: 'Feature Store (Redis/Feast)', status: 'degraded', latencyMs: 120 },
+  { service: 'API Gateway', status: 'ok', latencyMs: 55 },
+  { service: 'WebSocket Stream', status: 'ok', latencyMs: 40 }
+];
+
+export const commsStatus = [
+  { channel: 'LED Signage', successRate: 98, queue: 2, lastSendMins: 3 },
+  { channel: 'SMS Gateway', successRate: 96, queue: 12, lastSendMins: 1 },
+  { channel: 'IVR System', successRate: 92, queue: 5, lastSendMins: 12 },
+  { channel: 'Mobile Push', successRate: 97, queue: 0, lastSendMins: 2 }
+];
+
+export const signageTemplates = [
+  { id: 'T1', name: 'Reroute Advisory', text: 'Please follow Route B due to congestion at {zone}.' },
+  { id: 'T2', name: 'Holding Pattern', text: 'Kindly wait at current location. Movement will resume shortly.' },
+  { id: 'T3', name: 'Safety Notice', text: 'Keep left, move calmly, and follow official instructions.' }
+];
+
+export const aiSuggestions = [
+  { id: 'S-01', zone: 'Mahakaleshwar Temple', type: 'reroute', impact: '-18% density in 30 min', details: 'Open Route C, close Route A for 20 min' },
+  { id: 'S-02', zone: 'Parking Zone A', type: 'hold', impact: '-12% inflow in 15 min', details: 'Hold new arrivals for 10 min' }
+];
