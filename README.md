@@ -370,13 +370,6 @@ Computer Science & Engineering Department
 
 ---
 
-## 📊 Project Statistics
-
-![GitHub stars](https://img.shields.io/github/stars/your-repo/crowdsafe-ai)
-![GitHub forks](https://img.shields.io/github/forks/your-repo/crowdsafe-ai)
-![GitHub issues](https://img.shields.io/github/issues/your-repo/crowdsafe-ai)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/your-repo/crowdsafe-ai)
-
 **Built with ❤️ for pilgrim safety by Team MANTHAN**
 
 ---
